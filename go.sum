@@ -1,1 +1,4 @@
-
+github.com/ppxz2014/crypto v1.0.1 h1:jPgezRyCdGPeBIyLrm4ElC0Zwb2TeJImwO/YvQebHDw=
+github.com/ppxz2014/crypto v1.0.1/go.mod h1:VVGUxdqw8duYMIUj+ehEJs+eecXFXSbiAWgeciaS8Is=
+golang.org/x/crypto v0.21.0 h1:X31++rzVUdKhX5sWmSOFZxx8UW/ldWx55cbf08iNAMA=
+golang.org/x/crypto v0.21.0/go.mod h1:0BP7YvVV9gBbVKyeTG0Gyn+gZm94bibOW5BjDEYAOMs=
