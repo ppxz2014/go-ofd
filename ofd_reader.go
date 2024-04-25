@@ -10,6 +10,7 @@ import (
 
 const (
 	OFD_PATH = "OFD.xml"
+	//OFD_PATH = "sample.ofd"
 )
 
 type OFDReader struct {

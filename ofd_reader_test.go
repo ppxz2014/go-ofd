@@ -8,59 +8,60 @@ import (
 
 func TestNewOFDReader(t *testing.T) {
 	pwd, _ := os.Getwd()
-    // 替换成目标文件
+	// 替换成目标文件
 	file := filepath.Join(pwd, "sample.ofd")
 
 	ofdReader, err := NewOFDReader(file)
 	if err != nil {
-		 t.Logf("%s", err)
- 	}
+		t.Logf("%s", err)
+	}
 	defer ofdReader.Close()
 
 	ofd, err := ofdReader.OFD()
 	if err != nil {
-		t.Logf("%v", err)
+		t.Logf("ofdReader error: %+v\n", err)
 	} else {
-		t.Logf("%v", ofd)
+		t.Logf("ofdReader ofd: %+v\n", ofd)
 	}
 
 	doc_0 := ofd.DocBody[0].DocInfo.DocID.Text
 	doc, err := ofdReader.GetDocumentById(doc_0)
 	if err != nil {
-		t.Logf("%v", err)
+		t.Logf("doc err %+v\n", err)
 	} else {
-		t.Logf("%v", doc)
+		t.Logf("doc: %v\n", doc)
 	}
 
 	if attachments, err := doc.GetAttachments(); err != nil {
-		t.Logf("%v", err)
+		t.Logf("attachments err %+v\n", err)
 	} else {
-		t.Logf("%v", attachments)
+		t.Logf("attachments %+v\n", attachments)
 	}
 
 	signs, err := ofdReader.GetSignaturesById(doc_0)
 	if err != nil {
-		t.Logf("%v", err)
+		t.Logf("signs err %+v\n", err)
 	} else {
-		t.Logf("%v", signs)
+		//t.Logf("signs %+v\n", signs)
 	}
 
 	sign_1 := signs.Signature[0].ID
 	sign, err := signs.GetSignatureById(sign_1)
 	if err != nil {
-		t.Logf("%v", err)
+		t.Logf("sign_1 err %v\n", err)
 	} else {
-		t.Logf("%v", sign)
+		//t.Logf("sign_1 %+v\n", sign)
+		t.Logf("sign_1 content: %s \n", string(sign.Content))
 	}
 	if result, err := sign.VerifyDigest(); err != nil {
-		t.Logf("%v", err)
+		t.Logf("result err %+v\n", err)
 	} else {
-		t.Logf("%v", result)
+		t.Logf("result %+v\n", result)
 	}
 	if result, err := sign.Verify(); err != nil {
-		t.Logf("%v", err)
+		t.Logf("result2 err%v", err)
 	} else {
-		t.Logf("%v", result)
+		t.Logf("result2 %+v\n", result)
 	}
 
 }

@@ -23,8 +23,8 @@ const ofd_content = `
 func TestOFD(t *testing.T) {
 	var ofd OFD
 	if err := xml.Unmarshal([]byte(ofd_content), &ofd); err != nil {
-		t.Logf("%v", err)
+		t.Logf("%+v", err)
 	} else {
-		t.Logf("%v", ofd)
+		t.Logf("%+v", ofd)
 	}
 }
